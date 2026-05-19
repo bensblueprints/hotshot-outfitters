@@ -6,6 +6,7 @@ import { Phone, ArrowRight, MapPin } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { PhotoGrid } from "@/components/PhotoGrid";
 import { JsonLd } from "@/components/JsonLd";
+import { VideoHero } from "@/components/VideoHero";
 import { alt, huntImages } from "@/lib/alts";
 import { hunts, site } from "@/lib/site";
 import { getHuntContent } from "@/lib/content";
@@ -73,15 +74,25 @@ export default async function HuntDetail({
 
       {/* Hero */}
       <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
-        <Image
-          src={`/images/${heroImage}`}
-          alt={alt(heroImage)}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-pine-deep/70 via-pine-deep/70 to-pine-deep" />
+        {hunt.video ? (
+          <VideoHero
+            src={hunt.video}
+            poster={`/images/${heroImage}`}
+            overlayClass="bg-gradient-to-b from-pine-deep/70 via-pine-deep/65 to-pine-deep"
+          />
+        ) : (
+          <Image
+            src={`/images/${heroImage}`}
+            alt={alt(heroImage)}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-40"
+          />
+        )}
+        {!hunt.video && (
+          <div className="absolute inset-0 bg-gradient-to-b from-pine-deep/70 via-pine-deep/70 to-pine-deep" />
+        )}
         <div className="relative mx-auto max-w-5xl px-5 lg:px-8">
           <Reveal>
             <Link

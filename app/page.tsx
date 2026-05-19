@@ -4,6 +4,7 @@ import { Phone, MapPin, Compass, Crosshair, Ship, Award } from "lucide-react";
 import { CategoryTile } from "@/components/CategoryTile";
 import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
+import { VideoHero } from "@/components/VideoHero";
 import { alt } from "@/lib/alts";
 import { hunts, site } from "@/lib/site";
 
@@ -40,15 +41,11 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-[92vh] flex items-end overflow-hidden grain">
-        <Image
-          src="/images/michigan-hunting-whitetail-deer-michigan-08.webp"
-          alt={alt("michigan-hunting-whitetail-deer-michigan-08.webp")}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover animate-slowzoom"
+        <VideoHero
+          src="/videos/hero-montage.mp4"
+          poster="/images/michigan-hunting-whitetail-deer-michigan-08.webp"
+          overlayClass="bg-gradient-to-t from-pine-deep via-pine-deep/60 to-pine-deep/30"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-pine-deep via-pine-deep/60 to-pine-deep/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-pine-deep/80 via-transparent to-transparent" />
 
         <div className="relative mx-auto max-w-7xl w-full px-5 lg:px-8 pb-20 lg:pb-28">

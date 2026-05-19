@@ -26,6 +26,7 @@ export const hunts = [
     imagePrefix: "michigan-hunting-whitetail-deer-michigan",
     imageCount: 15,
     species: "Whitetail Deer",
+    video: "/videos/whitetail-hero.mp4",
   },
   {
     slug: "wild-turkey",
@@ -34,6 +35,7 @@ export const hunts = [
     imagePrefix: "michigan-hunting-wild-turkey-michigan",
     imageCount: 6,
     species: "Wild Turkey",
+    video: "/videos/turkey-hero.mp4",
   },
   {
     slug: "duck",
@@ -42,6 +44,7 @@ export const hunts = [
     imagePrefix: "michigan-hunting-duck-waterfowl-michigan",
     imageCount: 3,
     species: "Duck",
+    video: null,
   },
   {
     slug: "goose",
@@ -50,6 +53,7 @@ export const hunts = [
     imagePrefix: "michigan-hunting-canada-goose-michigan",
     imageCount: 11,
     species: "Canada Goose",
+    video: "/videos/goose-hero.mp4",
   },
   {
     slug: "coyote-fox",
@@ -58,6 +62,7 @@ export const hunts = [
     imagePrefix: "michigan-hunting-coyote-fox-predator-michigan",
     imageCount: 4,
     species: "Coyote & Fox",
+    video: null,
   },
   {
     slug: "cottontail-rabbit",
@@ -66,6 +71,7 @@ export const hunts = [
     imagePrefix: "michigan-hunting-cottontail-rabbit-michigan",
     imageCount: 8,
     species: "Cottontail Rabbit",
+    video: "/videos/rabbit-hero.mp4",
   },
   {
     slug: "crow",
@@ -74,6 +80,7 @@ export const hunts = [
     imagePrefix: "michigan-hunting-crow-michigan",
     imageCount: 1,
     species: "Crow",
+    video: "/videos/crow-hero.mp4",
   },
 ] as const;
 
