@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Phone, MapPin, Ship, Compass, Sun, Calendar } from "lucide-react";
+import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { PhotoGrid } from "@/components/PhotoGrid";
 import { JsonLd } from "@/components/JsonLd";
 import { BookingForm } from "@/components/BookingForm";
 import { alt, huntImages } from "@/lib/alts";
-import { site } from "@/lib/site";
+import { site, charters } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Lake Huron Charter Fishing | Port Hope, Michigan | Hotshot Outfitters",
@@ -93,6 +94,52 @@ export default function CharterFishing() {
               cooler, and whatever luck you packed.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Charter species tiles */}
+      <section className="py-12 lg:py-20 border-t border-ember/10">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <Reveal>
+            <div className="text-ember text-xs tracking-[0.4em] font-display mb-3">
+              WHAT WE TARGET
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl tracking-wider mb-10">
+              CHOOSE YOUR <span className="text-ember">SPECIES.</span>
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {charters.map((c, i) => {
+              const img = `${c.imagePrefix}-${String(c.imageIndex).padStart(2, "0")}.webp`;
+              return (
+                <Reveal key={c.slug} delay={i * 0.08}>
+                  <Link
+                    href={`/charter-fishing/${c.slug}`}
+                    className="group relative block aspect-[4/3] overflow-hidden"
+                  >
+                    <Image
+                      src={`/images/${img}`}
+                      alt={alt(img)}
+                      fill
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-pine-deep via-pine-deep/40 to-transparent" />
+                    <div className="absolute inset-0 ring-1 ring-inset ring-bone/0 group-hover:ring-ember transition" />
+                    <div className="absolute inset-x-0 bottom-0 p-7">
+                      <div className="text-ember text-[10px] tracking-[0.4em] font-display mb-2">
+                        LAKE HURON
+                      </div>
+                      <h3 className="font-display text-4xl tracking-wider text-bone group-hover:text-ember transition text-shadow-strong">
+                        {c.title.toUpperCase()}
+                      </h3>
+                      <p className="mt-2 text-mist text-sm leading-snug max-w-md">{c.short}</p>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 

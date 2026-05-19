@@ -85,3 +85,24 @@ export const hunts = [
 ] as const;
 
 export type HuntSlug = (typeof hunts)[number]["slug"];
+
+export const charters = [
+  {
+    slug: "walleye",
+    title: "Walleye",
+    short: "Trolled crawler harnesses, jigs, and crankbaits for Lake Huron walleye.",
+    imagePrefix: "michigan-charter-fishing-lake-huron",
+    imageIndex: 1,
+    species: "Lake Huron Walleye",
+  },
+  {
+    slug: "salmon",
+    title: "Salmon",
+    short: "Chinook, coho, and Atlantic salmon trolling on Lake Huron's open water.",
+    imagePrefix: "michigan-charter-fishing-lake-huron",
+    imageIndex: 4,
+    species: "Lake Huron Salmon",
+  },
+] as const;
+
+export type CharterSlug = (typeof charters)[number]["slug"];

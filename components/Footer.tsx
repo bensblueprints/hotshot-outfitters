@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Phone, MapPin } from "lucide-react";
-import { site, hunts } from "@/lib/site";
+import { site, hunts, charters } from "@/lib/site";
 
 // Michigan-state + species SEO link row (per Ben — important for search)
 const seoLinks: { label: string; href: string }[] = [
@@ -15,8 +15,10 @@ const seoLinks: { label: string; href: string }[] = [
   { label: "Michigan Crow Hunting", href: "/hunts/crow" },
   { label: "Michigan Charter Fishing", href: "/charter-fishing" },
   { label: "Lake Huron Charter Fishing", href: "/charter-fishing" },
-  { label: "Lake Huron Walleye Fishing", href: "/charter-fishing" },
-  { label: "Lake Huron Salmon Fishing", href: "/charter-fishing" },
+  { label: "Lake Huron Walleye Fishing", href: "/charter-fishing/walleye" },
+  { label: "Michigan Walleye Charters", href: "/charter-fishing/walleye" },
+  { label: "Lake Huron Salmon Fishing", href: "/charter-fishing/salmon" },
+  { label: "Michigan Chinook Salmon Fishing", href: "/charter-fishing/salmon" },
   { label: "Michigan Hunting Guide", href: "/hunts" },
   { label: "Port Hope Michigan Hunting Guide", href: "/about" },
   { label: "Huron County Michigan Hunting", href: "/hunts" },
@@ -63,12 +65,18 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="font-display text-lg tracking-widest text-ember mb-4">EXPLORE</div>
+          <div className="font-display text-lg tracking-widest text-ember mb-4">CHARTER FISHING</div>
           <ul className="space-y-2 text-sm">
-            <li><Link href="/charter-fishing" className="text-mist hover:text-bone transition">Charter Fishing</Link></li>
-            <li><Link href="/about" className="text-mist hover:text-bone transition">About Us</Link></li>
+            <li><Link href="/charter-fishing" className="text-mist hover:text-bone transition">All Charters</Link></li>
+            {charters.map((c) => (
+              <li key={c.slug}>
+                <Link href={`/charter-fishing/${c.slug}`} className="text-mist hover:text-bone transition">
+                  Lake Huron {c.title}
+                </Link>
+              </li>
+            ))}
+            <li className="pt-2 border-t border-ember/10 mt-2"><Link href="/about" className="text-mist hover:text-bone transition">About Us</Link></li>
             <li><Link href="/contact" className="text-mist hover:text-bone transition">Contact</Link></li>
-            <li><Link href="/hunts" className="text-mist hover:text-bone transition">All Hunts</Link></li>
           </ul>
         </div>
       </div>

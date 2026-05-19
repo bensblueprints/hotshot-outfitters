@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { hunts, site } from "@/lib/site";
+import { hunts, charters, site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     ...hunts.map((h) => ({
       url: `${base}/hunts/${h.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    })),
+    ...charters.map((c) => ({
+      url: `${base}/charter-fishing/${c.slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.85,
