@@ -107,6 +107,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, skipped: "not this agent", agentId });
   }
 
+  const conversationId = (data.conversation_id as string | undefined) ?? undefined;
+  const callMetadata = data.metadata as Record<string, unknown> | undefined;
+  const callDurationSecs =
+    (callMetadata?.call_duration_secs as number | undefined) ??
+    (data.call_duration_secs as number | undefined);
+  const analysis = data.analysis as Record<string, unknown> | undefined;
+  const callSummary =
+    (analysis?.transcript_summary as string | undefined) ??
+    (data.transcript_summary as string | undefined);
+
   const transcript = ((data.transcript as Turn[] | undefined) ?? [])
     .map((t) => `${t.role ?? "?"}: ${t.message ?? ""}`)
     .join("\n");
@@ -122,6 +132,10 @@ export async function POST(request: Request) {
       source: "voice-partial",
       notes: "Voice call with no extractable booking fields",
       rawTranscript: transcript.slice(0, 8000),
+      conversationId,
+      agentId,
+      callDurationSecs,
+      callSummary,
     });
     return NextResponse.json({ ok: true, captured: 0 });
   }
@@ -130,6 +144,10 @@ export async function POST(request: Request) {
     source: filledCount >= 3 ? "voice" : "voice-partial",
     ...extracted,
     rawTranscript: transcript.slice(0, 8000),
+    conversationId,
+    agentId,
+    callDurationSecs,
+    callSummary,
   });
 
   const mailResult = await emailBooking(booking);

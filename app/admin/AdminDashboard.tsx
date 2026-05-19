@@ -112,6 +112,31 @@ export function AdminDashboard({ initialBookings }: { initialBookings: Booking[]
                 </div>
               </div>
               {b.notes && <div className="mt-3 text-sm text-mist border-t border-ember/10 pt-3">{b.notes}</div>}
+              {b.callSummary && (
+                <div className="mt-3 text-sm text-mist border-t border-ember/10 pt-3">
+                  <div className="text-[10px] tracking-widest text-ember font-display mb-1">CALL SUMMARY</div>
+                  {b.callSummary}
+                </div>
+              )}
+              {b.conversationId && (
+                <div className="mt-3 border-t border-ember/10 pt-3">
+                  <div className="text-[10px] tracking-widest text-ember font-display mb-2">
+                    CALL RECORDING
+                    {typeof b.callDurationSecs === "number" && (
+                      <span className="ml-2 text-mist/70">
+                        {Math.floor(b.callDurationSecs / 60)}:{String(b.callDurationSecs % 60).padStart(2, "0")}
+                      </span>
+                    )}
+                  </div>
+                  <audio
+                    controls
+                    preload="none"
+                    src={`/api/admin/conversation-audio/${b.conversationId}`}
+                    className="w-full max-w-md"
+                  />
+                  <div className="text-[10px] text-mist/50 mt-1">Conversation: {b.conversationId}</div>
+                </div>
+              )}
               {b.rawTranscript && (
                 <details className="mt-3 text-xs">
                   <summary className="cursor-pointer text-mist hover:text-ember">View call transcript</summary>

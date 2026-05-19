@@ -17,6 +17,10 @@ export interface Booking {
   notes: string;
   page: string;
   rawTranscript?: string;
+  conversationId?: string;
+  agentId?: string;
+  callDurationSecs?: number;
+  callSummary?: string;
 }
 
 function newId() {
@@ -44,6 +48,10 @@ export async function saveBooking(input: Partial<Booking> & { source: BookingSou
     notes: (input.notes ?? "").trim(),
     page: input.page ?? "",
     rawTranscript: input.rawTranscript,
+    conversationId: input.conversationId,
+    agentId: input.agentId,
+    callDurationSecs: input.callDurationSecs,
+    callSummary: input.callSummary,
   };
 
   const store = bookingsStore();
