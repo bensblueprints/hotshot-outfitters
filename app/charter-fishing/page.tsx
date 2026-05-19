@@ -4,6 +4,7 @@ import { Phone, MapPin, Ship, Compass, Sun, Calendar } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { PhotoGrid } from "@/components/PhotoGrid";
 import { JsonLd } from "@/components/JsonLd";
+import { BookingForm } from "@/components/BookingForm";
 import { alt, huntImages } from "@/lib/alts";
 import { site } from "@/lib/site";
 
@@ -130,12 +131,20 @@ export default function CharterFishing() {
         </div>
       </section>
 
+      {/* Booking form */}
+      <BookingForm
+        defaultHunt="Charter Fishing"
+        page="/charter-fishing"
+        title="BOOK A LAKE HURON DAY."
+        kicker="MICHIGAN CHARTER FISHING"
+      />
+
       {/* CTA */}
       <section className="py-20 lg:py-28 border-t border-ember/10">
         <div className="mx-auto max-w-4xl px-5 lg:px-8 text-center">
           <Reveal>
             <h2 className="font-display text-5xl lg:text-7xl tracking-wider mb-6">
-              BOOK A LAKE HURON DAY.
+              CALL TO LOCK IN YOUR DATES.
             </h2>
             <p className="text-mist text-lg max-w-2xl mx-auto mb-8">
               Charter dates fill quickly once the lake opens. Call to lock in.

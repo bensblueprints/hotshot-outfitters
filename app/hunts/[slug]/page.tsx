@@ -7,6 +7,7 @@ import { Reveal } from "@/components/Reveal";
 import { PhotoGrid } from "@/components/PhotoGrid";
 import { JsonLd } from "@/components/JsonLd";
 import { VideoHero } from "@/components/VideoHero";
+import { BookingForm } from "@/components/BookingForm";
 import { alt, huntImages } from "@/lib/alts";
 import { hunts, site } from "@/lib/site";
 import { getHuntContent } from "@/lib/content";
@@ -150,6 +151,14 @@ export default async function HuntDetail({
           </div>
         </section>
       )}
+
+      {/* Booking form */}
+      <BookingForm
+        defaultHunt={hunt.title}
+        page={`/hunts/${slug}`}
+        title={`BOOK YOUR ${hunt.title.toUpperCase()} HUNT.`}
+        kicker={`MICHIGAN ${hunt.species.toUpperCase()} HUNT`}
+      />
 
       {/* Other hunts */}
       <section className="py-16 lg:py-24">
