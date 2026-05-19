@@ -1,0 +1,80 @@
+export const site = {
+  name: "Hotshot Outfitters",
+  tagline: "Michigan Guided Hunts & Lake Huron Charter Fishing",
+  description:
+    "Hotshot Outfitters runs full-service guided hunts and Lake Huron charter fishing trips from Port Hope, Michigan. 20+ years of experience guiding deer, turkey, waterfowl, predator, and small-game hunters across Michigan's Thumb.",
+  url: "https://hotshotoutfitters.com",
+  phone1: "(989) 551-4551",
+  phone2: "(989) 670-4336",
+  phone1Tel: "+19895514551",
+  phone2Tel: "+19896704336",
+  address: {
+    street: "6900 Huron City Road",
+    city: "Port Hope",
+    state: "MI",
+    zip: "48468",
+    region: "Huron County / Michigan's Thumb",
+  },
+  yearsExperience: 20,
+} as const;
+
+export const hunts = [
+  {
+    slug: "whitetail-deer",
+    title: "Whitetail Deer",
+    short: "Michigan's premier big-game hunt. Archery, firearm, muzzleloader.",
+    imagePrefix: "michigan-hunting-whitetail-deer-michigan",
+    imageCount: 15,
+    species: "Whitetail Deer",
+  },
+  {
+    slug: "wild-turkey",
+    title: "Wild Turkey",
+    short: "Spring gobblers and fall flocks across the Thumb's mixed cover.",
+    imagePrefix: "michigan-hunting-wild-turkey-michigan",
+    imageCount: 6,
+    species: "Wild Turkey",
+  },
+  {
+    slug: "duck",
+    title: "Duck",
+    short: "Lake Huron shoreline marsh and field hunts for puddle and divers.",
+    imagePrefix: "michigan-hunting-duck-waterfowl-michigan",
+    imageCount: 3,
+    species: "Duck",
+  },
+  {
+    slug: "goose",
+    title: "Goose",
+    short: "Decoyed Canada goose hunts over Thumb-region grain fields.",
+    imagePrefix: "michigan-hunting-canada-goose-michigan",
+    imageCount: 11,
+    species: "Canada Goose",
+  },
+  {
+    slug: "coyote-fox",
+    title: "Coyote & Fox",
+    short: "Year-round predator hunts — calling, night setups where legal.",
+    imagePrefix: "michigan-hunting-coyote-fox-predator-michigan",
+    imageCount: 4,
+    species: "Coyote & Fox",
+  },
+  {
+    slug: "cottontail-rabbit",
+    title: "Cottontail Rabbit",
+    short: "Classic Michigan small-game over brushy fence lines and thickets.",
+    imagePrefix: "michigan-hunting-cottontail-rabbit-michigan",
+    imageCount: 8,
+    species: "Cottontail Rabbit",
+  },
+  {
+    slug: "crow",
+    title: "Crow",
+    short: "Wing-shooting practice on Michigan's open crow seasons.",
+    imagePrefix: "michigan-hunting-crow-michigan",
+    imageCount: 1,
+    species: "Crow",
+  },
+] as const;
+
+export type HuntSlug = (typeof hunts)[number]["slug"];
